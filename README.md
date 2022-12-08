@@ -1,3 +1,5 @@
+[![.NET](https://github.com/aimenux/WatchDogDemo/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/aimenux/WatchDogDemo/actions/workflows/ci.yml)
+
 # WatchDogDemo
 ```
 Using WatchDog for request/response/exception logging
