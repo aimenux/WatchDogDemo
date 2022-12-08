@@ -348,3 +348,7 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/src/WayTwo/watchlogs.db
+/src/WayTwo/watchlogs-log.db
+/src/WayOne/watchlogs.db
+/src/WayOne/watchlogs-log.db
