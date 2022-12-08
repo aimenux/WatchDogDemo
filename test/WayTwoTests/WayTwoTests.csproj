@@ -35,7 +35,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\src\WayTwo\WayTwo.csproj" />
+	  <ProjectReference Include="..\..\src\WayTwo\WayTwo.csproj" />
 	</ItemGroup>
 
 </Project>
