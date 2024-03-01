@@ -1,5 +1,4 @@
 using Asp.Versioning;
-using Asp.Versioning.Conventions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using WatchDog;
@@ -13,10 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var defaultVersion = new ApiVersion(1, 0);
 builder.Services
     .AddApiVersioning(config =>
     {
-        config.DefaultApiVersion = new ApiVersion(1, 0);
+        config.DefaultApiVersion = defaultVersion;
         config.AssumeDefaultVersionWhenUnspecified = true;
         config.ReportApiVersions = true;
     })
@@ -24,6 +24,7 @@ builder.Services
     {
         options.GroupNameFormat = "'v'VVV";
         options.SubstituteApiVersionInUrl = true;
+        options.DefaultApiVersion = defaultVersion;
     });
 
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
@@ -68,7 +69,6 @@ if (settings.IsWatchDogEnabled)
 
 app.UseHttpsRedirection();
 
-var defaultVersion = new ApiVersion(1, 0);
 var apiVersions = app.NewApiVersionSet()
     .HasApiVersion(defaultVersion)
     .Build();
@@ -80,7 +80,6 @@ app
         return Results.Ok(movies);
     })
     .WithApiVersionSet(apiVersions)
-    .HasApiVersions(new[] { defaultVersion })
     .WithName("GetMovies");
 
 app
@@ -90,7 +89,6 @@ app
         return Results.Ok(movie);
     })
     .WithApiVersionSet(apiVersions)
-    .HasApiVersions(new[] { defaultVersion })
     .WithName("GetMovie");
 
 app
@@ -100,7 +98,6 @@ app
         return Results.CreatedAtRoute("GetMovie", new { id = movie.Id }, movie);
     })
     .WithApiVersionSet(apiVersions)
-    .HasApiVersions(new[] { defaultVersion })
     .WithName("AddMovie");
 
 app
@@ -120,7 +117,6 @@ app
         return Results.NoContent();
     })
     .WithApiVersionSet(apiVersions)
-    .HasApiVersions(new[] { defaultVersion })
     .WithName("UpdateMovie");
 
 app
@@ -141,7 +137,6 @@ app
         return Results.NoContent();
     })
     .WithApiVersionSet(apiVersions)
-    .HasApiVersions(new[] { defaultVersion })
     .WithName("DeleteMovie");
 
 app.Run();

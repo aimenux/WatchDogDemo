@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -12,17 +13,19 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+var defaultVersion = new ApiVersion(1, 0);
 builder.Services
     .AddApiVersioning(config =>
     {
-        config.DefaultApiVersion = new ApiVersion(1, 0);
+        config.DefaultApiVersion = defaultVersion;
         config.AssumeDefaultVersionWhenUnspecified = true;
         config.ReportApiVersions = true;
     })
-    .AddVersionedApiExplorer(o =>
+    .AddApiExplorer(o =>
     {
         o.GroupNameFormat = "'v'VVV";
         o.SubstituteApiVersionInUrl = true;
+        o.DefaultApiVersion = defaultVersion;
     });
 
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();

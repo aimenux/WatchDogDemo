@@ -352,3 +352,7 @@ MigrationBackup/
 /src/WayTwo/watchlogs-log.db
 /src/WayOne/watchlogs.db
 /src/WayOne/watchlogs-log.db
+
+# JetBrains Rider
+*.sln.iml
+.idea/

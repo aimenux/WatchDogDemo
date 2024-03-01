@@ -8,7 +8,7 @@ using WayOne.Infrastructure;
 
 namespace WayOneTests;
 
-internal class WebApiTestFixture : WebApplicationFactory<Program>
+internal class IntegrationWebApplicationFactory : WebApplicationFactory<Program>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

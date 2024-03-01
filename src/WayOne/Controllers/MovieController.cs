@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
 using WayOne.Infrastructure;
 using WayOne.Models;

@@ -8,7 +8,7 @@ using WayTwo.Infrastructure;
 
 namespace WayTwoTests;
 
-internal class WebApiTestFixture : WebApplicationFactory<Program>
+internal class IntegrationWebApplicationFactory : WebApplicationFactory<Program>
 {
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
