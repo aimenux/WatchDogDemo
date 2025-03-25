@@ -10,6 +10,7 @@
         <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
         <IsPackable Condition="'$(IsTestProject)' == 'true'">false</IsPackable>
         <IsTestProject>$(MSBuildProjectName.EndsWith('Tests'))</IsTestProject>
-        <NoWarn>$(NoWarn);</NoWarn>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);CS1591;</NoWarn>
     </PropertyGroup>
 </Project>
