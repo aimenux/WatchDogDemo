@@ -1,8 +1,8 @@
 ﻿namespace WayOne;
 
-public class Settings
+public sealed record Settings
 {
-    public bool IsWatchDogEnabled { get; set; } = true;
-    public string WatchPageUsername { get; set; } = "admin";
-    public string WatchPagePassword { get; set; } = "admin";
+    public bool IsWatchDogEnabled { get; init; } = true;
+    public string WatchPageUsername { get; init; } = "admin";
+    public string WatchPagePassword { get; init; } = "admin";
 }

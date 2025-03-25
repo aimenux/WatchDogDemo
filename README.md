@@ -15,4 +15,4 @@ Using WatchDog for request/response/exception logging
 > ![WatchDogDemo](screenshots/WatchDogDemo.png)
 >
 
-**`Tools`** : net 8.0, web api, watch-dog, ef-core, xunit, fluent-assertions, nsubstitute
+**`Tools`** : net 9.0, web api, watch-dog, ef-core, xunit, fluent-assertions, nsubstitute
