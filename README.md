@@ -7,7 +7,7 @@ Using WatchDog for request/response/exception logging
 
 > In this repo, i m using [WatchDog](https://github.com/IzyPro/WatchDog) for request/response/exception logging in a basic web api built with 2 ways :
 >
-> - `WayOne` : based on mvc approach
+> - `WayOne` : based on controller api approach
 >
 > - `WayTwo` : based on minimal api approach
 >
