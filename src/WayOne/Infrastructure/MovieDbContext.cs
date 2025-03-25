@@ -15,6 +15,10 @@ namespace WayOne.Infrastructure
         {
             modelBuilder
                 .Entity<Movie>()
+                .HasKey(x => x.Id);
+            
+            modelBuilder
+                .Entity<Movie>()
                 .HasIndex(x => x.Title);
 
             modelBuilder
@@ -24,8 +28,8 @@ namespace WayOne.Infrastructure
 
         private static Movie[] GetMovies()
         {
-            return new[]
-            {
+            return
+            [
                 new Movie
                 {
                     Id = 1,
@@ -38,7 +42,7 @@ namespace WayOne.Infrastructure
                     Title = "The Sixth Sense",
                     ReleaseDate = new DateTime(1999, 12, 23)
                 }
-            };
+            ];
         }
     }
 }
