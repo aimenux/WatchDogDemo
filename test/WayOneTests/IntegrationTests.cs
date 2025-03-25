@@ -10,8 +10,8 @@ public class IntegrationTests
     public async Task ShouldGetMovies()
     {
         // arrange
-        var factory = new IntegrationWebApplicationFactory();
-        var client = factory.CreateClient();
+        await using var factory = new IntegrationWebApplicationFactory();
+        using var client = factory.CreateClient();
 
         // act
         var response = await client.GetAsync("/api/v1/movies");
@@ -26,8 +26,8 @@ public class IntegrationTests
     public async Task ShouldGetMovieById()
     {
         // arrange
-        var factory = new IntegrationWebApplicationFactory();
-        var client = factory.CreateClient();
+        await using var factory = new IntegrationWebApplicationFactory();
+        using var client = factory.CreateClient();
 
         // act
         var response = await client.GetAsync("/api/v1/movies/1");
@@ -42,8 +42,8 @@ public class IntegrationTests
     public async Task ShouldAddMovie()
     {
         // arrange
-        var factory = new IntegrationWebApplicationFactory();
-        var client = factory.CreateClient();
+        await using var factory = new IntegrationWebApplicationFactory();
+        using var client = factory.CreateClient();
         const string payload = "{\"title\": \"The Matrix\",\"ReleaseDate\": \"1999-03-24T12:14:09.599Z\"}";
         var content = new StringContent(payload, Encoding.UTF8, "application/json");
 
@@ -60,9 +60,9 @@ public class IntegrationTests
     public async Task ShouldUpdateMovie()
     {
         // arrange
-        var factory = new IntegrationWebApplicationFactory();
-        var client = factory.CreateClient();
-        const string payload = "{\"id\": \"1\",\"title\": \"Titanic\",\"ReleaseDate\": \"1998-01-15T12:14:09.599Z\"}";
+        await using var factory = new IntegrationWebApplicationFactory();
+        using var client = factory.CreateClient();
+        const string payload = "{\"id\": 1,\"title\": \"Titanic\",\"ReleaseDate\": \"1998-01-15T12:14:09.599Z\"}";
         var content = new StringContent(payload, Encoding.UTF8, "application/json");
 
         // act
@@ -78,8 +78,8 @@ public class IntegrationTests
     public async Task ShouldDeleteMovie()
     {
         // arrange
-        var factory = new IntegrationWebApplicationFactory();
-        var client = factory.CreateClient();
+        await using var factory = new IntegrationWebApplicationFactory();
+        using var client = factory.CreateClient();
 
         // act
         var response = await client.DeleteAsync("/api/v1/movies/2");

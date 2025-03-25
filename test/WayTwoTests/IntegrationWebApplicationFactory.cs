@@ -1,10 +1,6 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using WayTwo.Infrastructure;
 
 namespace WayTwoTests;
 
@@ -17,14 +13,6 @@ internal class IntegrationWebApplicationFactory : WebApplicationFactory<Program>
             var projectDir = Directory.GetCurrentDirectory();
             var configPath = Path.Combine(projectDir, "appsettings.testing.json");
             configBuilder.AddJsonFile(configPath);
-        });
-
-        builder.ConfigureTestServices(services =>
-        {
-            services.AddDbContext<MovieDbContext>(options =>
-            {
-                options.UseInMemoryDatabase($"MoviesDb-{Guid.NewGuid():N}");
-            });
         });
     }
 }
